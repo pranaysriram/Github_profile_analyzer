@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "GitHub Profile Analyzer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Analyze profile",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/profiles/analyze",
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"torvalds\"\n}" }
+      }
+    },
+    {
+      "name": "List profiles",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/profiles" }
+    },
+    {
+      "name": "Get profile by username",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/profiles/torvalds" }
+    },
+    {
+      "name": "Delete profile",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/api/profiles/torvalds" }
+    }
+  ]
+}
